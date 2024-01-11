@@ -27,6 +27,10 @@ struct MapKitExample: View {
                 .tabItem {
                     Label("Position", systemImage: "mappin.circle")
                 }
+            AnnotationsViewExample()
+                .tabItem {
+                    Label("Annotations", systemImage: "mappin.and.ellipse.circle")
+                }
         }
     }
 }
@@ -67,11 +71,40 @@ struct MapPositionExampleView: View {
         
     )
     
+    @State private var lat = 0.0
+    @State private var long = 0.0
+    @State private var spanLat = 0.0
+    @State private var spanLong = 0.0
+    
     var body: some View {
         VStack {
+            HStack {
+                Text("Latitude: \(lat)")
+                Text("Longitude: \(long)")
+                Text("Span Lat: \(spanLat)")
+                Text("Span Long: \(spanLong)")
+            }
+            .padding(.vertical)
             Map(position: $position)
                 .mapStyle(.hybrid)
+                .onMapCameraChange { context in
+                    lat = context.region.center.latitude
+                    long = context.region.center.longitude
+                    spanLat = context.region.span.latitudeDelta
+                    spanLong = context.region.span.longitudeDelta
+                    let location: String = """
+Location:
+    Latitude: \(lat)
+    Longitude: \(long)
+Span:
+    Lat: \(spanLat)
+    Long: \(spanLong)
+"""
+                    print(location)
+                }
+                .frame(height: 400)
                 .padding(.bottom)
+            
             HStack {
                 Button("London") {
                     position = MapCameraPosition.region(
@@ -98,7 +131,6 @@ struct MapPositionExampleView: View {
                         )
                     )
                 }
-                .padding(.horizontal)
             }
             .padding()
             
@@ -106,6 +138,53 @@ struct MapPositionExampleView: View {
     }
 }
 
+struct AnnotationsViewExample: View {
+    
+    struct Location: Identifiable {
+        let id: UUID = UUID()
+        var name: String
+        var coordinate: CLLocationCoordinate2D
+    }
+    
+    let locations: [Location] = [
+        Location(name: "Buckingham Palace",
+                 coordinate: CLLocationCoordinate2D(latitude: 51.501, longitude: -0.141)),
+        Location(name: "Tower of London",
+                 coordinate: CLLocationCoordinate2D(latitude: 51.508, longitude: -0.076)),
+        Location(name: "Golden Gate Bridge",
+                 coordinate: CLLocationCoordinate2D(latitude: 37.819542, longitude: -122.478530)),
+    ]
+    
+    var body: some View {
+        Map {
+            ForEach(locations) { location in
+                Annotation(location.name, coordinate: location.coordinate) {
+                    Text(location.name)
+                        .font(.headline)
+                        .padding()
+                        .background(.blue)
+                        .foregroundStyle(.white)
+                        .clipShape(.capsule)
+                }
+                .annotationTitles(.hidden)
+            }
+        }
+    }
+}
+
+struct MapReaderViewExample: View {
+    var body: some View {
+        MapReader { proxy in
+            Map()
+                .onTapGesture { position in
+                    if let coordinate = proxy.convert(position, from: .local) {
+                        print(coordinate)
+                    }
+                }
+        }
+    }
+}
+
 #Preview {
-    MapKitExample()
+    MapReaderViewExample()
 }
