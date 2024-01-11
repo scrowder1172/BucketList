@@ -15,6 +15,7 @@
 		528EA82F2B4F11A900C78B30 /* DocumentsDirectoryExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528EA82E2B4F11A900C78B30 /* DocumentsDirectoryExample.swift */; };
 		528EA8312B4F2FD300C78B30 /* ViewStatesWithEnumsExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528EA8302B4F2FD300C78B30 /* ViewStatesWithEnumsExample.swift */; };
 		528EA8332B4F3EE900C78B30 /* MapKitExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528EA8322B4F3EE900C78B30 /* MapKitExample.swift */; };
+		528EA8352B50857D00C78B30 /* TouchIDFaceIDExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528EA8342B50857D00C78B30 /* TouchIDFaceIDExamples.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		528EA82E2B4F11A900C78B30 /* DocumentsDirectoryExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsDirectoryExample.swift; sourceTree = "<group>"; };
 		528EA8302B4F2FD300C78B30 /* ViewStatesWithEnumsExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStatesWithEnumsExample.swift; sourceTree = "<group>"; };
 		528EA8322B4F3EE900C78B30 /* MapKitExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitExample.swift; sourceTree = "<group>"; };
+		528EA8342B50857D00C78B30 /* TouchIDFaceIDExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchIDFaceIDExamples.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				528EA82E2B4F11A900C78B30 /* DocumentsDirectoryExample.swift */,
 				528EA8302B4F2FD300C78B30 /* ViewStatesWithEnumsExample.swift */,
 				528EA8322B4F3EE900C78B30 /* MapKitExample.swift */,
+				528EA8342B50857D00C78B30 /* TouchIDFaceIDExamples.swift */,
 			);
 			path = TutorialFiles;
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 				525060822B4C8E5C00849755 /* ContentView.swift in Sources */,
 				528EA82F2B4F11A900C78B30 /* DocumentsDirectoryExample.swift in Sources */,
 				525060802B4C8E5C00849755 /* BucketListApp.swift in Sources */,
+				528EA8352B50857D00C78B30 /* TouchIDFaceIDExamples.swift in Sources */,
 				528EA8312B4F2FD300C78B30 /* ViewStatesWithEnumsExample.swift in Sources */,
 				5250608F2B4C928E00849755 /* ComparableExample.swift in Sources */,
 			);
@@ -299,6 +303,7 @@
 				DEVELOPMENT_TEAM = 5G39MTZYS5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "\"We need to unlock your data.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -328,6 +333,7 @@
 				DEVELOPMENT_TEAM = 5G39MTZYS5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "\"We need to unlock your data.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
