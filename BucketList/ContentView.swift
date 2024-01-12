@@ -33,9 +33,7 @@ struct ContentView: View {
                         // display saved locations
                         ForEach(locations) { location in
                             Annotation(location.name,
-                                   coordinate: CLLocationCoordinate2D(
-                                    latitude: location.latitude, longitude: location.longitude
-                                   )
+                                       coordinate: location.coordinate
                             ) {
                                 Image(systemName: "star.circle")
                                     .resizable()
