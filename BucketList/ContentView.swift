@@ -18,6 +18,8 @@ struct ContentView: View {
     
     @State private var locations: [Location] = [Location]()
     
+    @State private var selectedPlace: Location?
+    
     let startPosition: MapCameraPosition = MapCameraPosition.region(
         MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: 56, longitude: -3),
@@ -41,6 +43,9 @@ struct ContentView: View {
                                     .frame(width: 44, height: 44)
                                     .background(.white)
                                     .clipShape(.circle)
+                                    .onLongPressGesture {
+                                        selectedPlace = location
+                                    }
                             }
                         }
                     }
@@ -57,6 +62,9 @@ struct ContentView: View {
                             let newLocation: Location = Location(id: UUID(), name: "TBD", description: "", latitude: tapLat, longitude: tapLong)
                             locations.append(newLocation)
                         }
+                    }
+                    .sheet(item: $selectedPlace) { place in
+                        Text(place.name)
                     }
                 }
                 
