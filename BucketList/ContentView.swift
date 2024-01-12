@@ -32,11 +32,18 @@ struct ContentView: View {
                     Map(initialPosition: startPosition) {
                         // display saved locations
                         ForEach(locations) { location in
-                            Marker(location.name,
+                            Annotation(location.name,
                                    coordinate: CLLocationCoordinate2D(
                                     latitude: location.latitude, longitude: location.longitude
                                    )
-                            )
+                            ) {
+                                Image(systemName: "star.circle")
+                                    .resizable()
+                                    .foregroundStyle(.red)
+                                    .frame(width: 44, height: 44)
+                                    .background(.white)
+                                    .clipShape(.circle)
+                            }
                         }
                     }
                     .mapStyle(.hybrid)
