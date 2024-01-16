@@ -15,6 +15,7 @@
 		525AFC1D2B51BA6B008AA6E3 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525AFC1C2B51BA6B008AA6E3 /* EditView.swift */; };
 		525AFC1F2B51F25E008AA6E3 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525AFC1E2B51F25E008AA6E3 /* Result.swift */; };
 		525AFC212B51F69E008AA6E3 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 525AFC202B51F69E008AA6E3 /* Launch Screen.storyboard */; };
+		525AFC252B57285F008AA6E3 /* NearbyPlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525AFC242B57285F008AA6E3 /* NearbyPlaceView.swift */; };
 		528EA82F2B4F11A900C78B30 /* DocumentsDirectoryExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528EA82E2B4F11A900C78B30 /* DocumentsDirectoryExample.swift */; };
 		528EA8312B4F2FD300C78B30 /* ViewStatesWithEnumsExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528EA8302B4F2FD300C78B30 /* ViewStatesWithEnumsExample.swift */; };
 		528EA8332B4F3EE900C78B30 /* MapKitExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528EA8322B4F3EE900C78B30 /* MapKitExample.swift */; };
@@ -32,6 +33,7 @@
 		525AFC1C2B51BA6B008AA6E3 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		525AFC1E2B51F25E008AA6E3 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		525AFC202B51F69E008AA6E3 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		525AFC242B57285F008AA6E3 /* NearbyPlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyPlaceView.swift; sourceTree = "<group>"; };
 		528EA82E2B4F11A900C78B30 /* DocumentsDirectoryExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsDirectoryExample.swift; sourceTree = "<group>"; };
 		528EA8302B4F2FD300C78B30 /* ViewStatesWithEnumsExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStatesWithEnumsExample.swift; sourceTree = "<group>"; };
 		528EA8322B4F3EE900C78B30 /* MapKitExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitExample.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				528EA8362B50A99900C78B30 /* Location.swift */,
 				525AFC1C2B51BA6B008AA6E3 /* EditView.swift */,
 				525AFC1E2B51F25E008AA6E3 /* Result.swift */,
+				525AFC242B57285F008AA6E3 /* NearbyPlaceView.swift */,
 				525060832B4C8E5D00849755 /* Assets.xcassets */,
 				5250608D2B4C927300849755 /* TutorialFiles */,
 				525060852B4C8E5D00849755 /* Preview Content */,
@@ -176,6 +179,7 @@
 				528EA8332B4F3EE900C78B30 /* MapKitExample.swift in Sources */,
 				525060822B4C8E5C00849755 /* ContentView.swift in Sources */,
 				528EA8372B50A99900C78B30 /* Location.swift in Sources */,
+				525AFC252B57285F008AA6E3 /* NearbyPlaceView.swift in Sources */,
 				528EA82F2B4F11A900C78B30 /* DocumentsDirectoryExample.swift in Sources */,
 				525060802B4C8E5C00849755 /* BucketListApp.swift in Sources */,
 				525AFC1D2B51BA6B008AA6E3 /* EditView.swift in Sources */,
