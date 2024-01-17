@@ -5,7 +5,7 @@
 //  Created by SCOTT CROWDER on 1/17/24.
 //
 
-import Foundation
+import SwiftUI
 
 extension EditView {
     @Observable
