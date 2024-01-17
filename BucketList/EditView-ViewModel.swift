@@ -11,14 +11,29 @@ extension EditView {
     @Observable
     final class ViewModel {
         
+        enum LoadingState {
+            case loading, loaded, failed
+        }
+        
+        var location: Location
         var name: String
         var description: String
         private(set) var pages: [Page] = [Page]()
         private(set) var loadingState: LoadingState = .loading
         
-        init(name: String, description: String) {
-            self.name = name
-            self.description = description
+        init(location: Location) {
+            self.name = location.name
+            self.description = location.description
+            self.location = location
+        }
+        
+        func createNewLocation() -> Location {
+            let newLocation: Location = Location(id: UUID(), 
+                                                 name: name,
+                                                 description: description,
+                                                 latitude: location.latitude,
+                                                 longitude: location.longitude)
+            return newLocation
         }
         
         func fetchNearbyPlaces(location: Location) async {

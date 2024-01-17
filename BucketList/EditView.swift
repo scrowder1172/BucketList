@@ -10,22 +10,15 @@ import MapKit
 
 struct EditView: View {
     
-    enum LoadingState {
-        case loading, loaded, failed
-    }
-    
     @Environment(\.dismiss) var dismiss
     
     @State private var viewModel: ViewModel
     
-    
-    var location: Location
     var onSave: (Location) -> Void
     
     init(location: Location, onSave: @escaping (Location) -> Void) {
-        self.location = location
         self.onSave = onSave
-        _viewModel = State(initialValue: ViewModel(name: location.name, description: location.description))
+        _viewModel = State(initialValue: ViewModel(location: location))
     }
     
     var body: some View {
@@ -59,14 +52,13 @@ struct EditView: View {
             .navigationTitle("Place Details")
             .toolbar {
                 Button("Save") {
-                    let newLocation: Location = Location(id: UUID(), name: viewModel.name, description: viewModel.description, latitude: location.latitude, longitude: location.longitude)
-                    
+                    let newLocation: Location = viewModel.createNewLocation()
                     onSave(newLocation)
                     dismiss()
                 }
             }
             .task {
-                await viewModel.fetchNearbyPlaces(location: location)
+                await viewModel.fetchNearbyPlaces(location: viewModel.location)
             }
         }
     }
