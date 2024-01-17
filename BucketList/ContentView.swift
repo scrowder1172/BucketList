@@ -98,6 +98,11 @@ struct ContentView: View {
                 viewModel.authenticate()
             }
             .buttonStyle(BorderedButtonStyle())
+            .alert("Auth Error", isPresented: $viewModel.isAuthenticationFailed) {
+                Button("OK") {}
+            } message: {
+                Text(viewModel.authFailedMessage)
+            }
         }
         
         

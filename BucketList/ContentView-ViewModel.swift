@@ -26,6 +26,9 @@ extension ContentView {
         
         var isUnlocked: Bool = false
         
+        var isAuthenticationFailed: Bool = false
+        private(set) var authFailedMessage: String = "Authentication failed"
+        
         init() {
             do {
                 let data: Data = try Data(contentsOf: savePath)
@@ -85,11 +88,15 @@ extension ContentView {
                             
                             print("Error authenticating user: UNKNOWN")
                         }
+                        self.authFailedMessage = "Failed to authenticate with biometrics. Please try again."
+                        self.isAuthenticationFailed = true
                     }
                 }
             } else {
                 // no biometrics
                 print("No biometrics configured")
+                authFailedMessage = "Biometrics are not configured. Please enable and try again."
+                isAuthenticationFailed = true
             }
         }
     }
