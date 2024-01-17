@@ -19,8 +19,7 @@ struct ContentView: View {
         )
     )
     
-    @State private var standardMapMode: Bool = false
-    @State private var isPresented: Bool = false
+    @AppStorage("mapStyle") private var mapStyle: String = "standard"
     
     var body: some View {
         if viewModel.isUnlocked {
@@ -46,7 +45,7 @@ struct ContentView: View {
                                     }
                                 }
                             }
-                            .mapStyle(standardMapMode ? .standard : .hybrid)
+                            .mapStyle(mapStyle == "standard" ? .standard : .hybrid)
                             .onMapCameraChange(frequency: .continuous) { context in
                                 viewModel.setCurrentLocation(coordinates: context.region.center)
                             }
@@ -80,7 +79,11 @@ struct ContentView: View {
                         .offset(x: -20, y: 0)
                 }
                 Button {
-                    standardMapMode.toggle()
+                    if mapStyle == "standard" {
+                        mapStyle = "hybrid"
+                    } else {
+                        mapStyle = "standard"
+                    }
                 } label: {
                     Image(systemName: "gear")
                         .resizable()
