@@ -10,15 +10,7 @@ import MapKit
 
 struct ContentView: View {
     
-    @State private var currentLat: Double = 0.0
-    @State private var currentLong: Double = 0.0
-    
-    @State private var tapLat: Double = 56.0
-    @State private var tapLong: Double = -3.0
-    
-    @State private var locations: [Location] = [Location]()
-    
-    @State private var selectedPlace: Location?
+    @State private var viewModel: ViewModel = ViewModel()
     
     let startPosition: MapCameraPosition = MapCameraPosition.region(
         MKCoordinateRegion(
@@ -33,7 +25,7 @@ struct ContentView: View {
                 MapReader { proxy in
                     Map(initialPosition: startPosition) {
                         // display saved locations
-                        ForEach(locations) { location in
+                        ForEach(viewModel.locations) { location in
                             Annotation(location.name,
                                        coordinate: location.coordinate
                             ) {
@@ -44,36 +36,29 @@ struct ContentView: View {
                                     .background(.white)
                                     .clipShape(.circle)
                                     .onLongPressGesture {
-                                        selectedPlace = location
+                                        viewModel.selectedPlace = location
                                     }
                             }
                         }
                     }
                     .mapStyle(.hybrid)
                     .onMapCameraChange(frequency: .continuous) { context in
-                        currentLat = context.region.center.latitude
-                        currentLong = context.region.center.longitude
+                        viewModel.setCurrentLocation(coordinates: context.region.center)
                     }
                     .onTapGesture { position in
                         if let coordinate = proxy.convert(position, from: .local) {
-                            tapLat = coordinate.latitude
-                            tapLong = coordinate.longitude
-                            // save locations
-                            let newLocation: Location = Location(id: UUID(), name: "TBD", description: "", latitude: tapLat, longitude: tapLong)
-                            locations.append(newLocation)
+                            viewModel.addLocation(at: coordinate)
                         }
                     }
-                    .sheet(item: $selectedPlace) { place in
+                    .sheet(item: $viewModel.selectedPlace) { place in
                         //Text(place.name)
-                        EditView(location: place) { newLocation in
-                            if let index = locations.firstIndex(of: place) {
-                                locations[index] = newLocation
-                            }
+                        EditView(location: place) { 
+                            viewModel.updateLocation(location: $0)
                         }
                     }
                 }
                 
-                Text("Lat: \(currentLat.formatted()), Long: \(currentLong.formatted())")
+                Text("Lat: \(viewModel.currentLat.formatted()), Long: \(viewModel.currentLong.formatted())")
                     .padding(10)
                     .font(.caption)
                     .background(.green)
@@ -81,7 +66,7 @@ struct ContentView: View {
                     .clipShape(.capsule)
                     .offset(x: -20, y: -20)
             }
-            Text("Lat:\(tapLat.formatted()), Long:\(tapLong.formatted())")
+            Text("Lat:\(viewModel.tapLat.formatted()), Long:\(viewModel.tapLong.formatted())")
                 .padding(10)
                 .font(.caption)
                 .background(.blue)
